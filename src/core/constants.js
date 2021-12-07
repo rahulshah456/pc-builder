@@ -1,0 +1,1 @@
+export const KEY_LOCAL_THEME = "theme";
