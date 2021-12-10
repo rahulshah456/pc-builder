@@ -4,9 +4,13 @@ import { primaryThemeColor } from '../../core/color';
 import Burger from './Burger';
 
 const Navigation = styled.div`
-  padding: 0 3em;
+  padding: 0 3rem;
   background-color: ${primaryThemeColor};
-  color: white
+  color: white;
+ 
+  @media (max-width: 768px) {
+    padding: 0 2rem;
+  }
 `;
 
 const Nav = styled.nav`

@@ -1,12 +1,17 @@
 import React from 'react';
 import { useRoutes, BrowserRouter } from "react-router-dom";
+import styled from 'styled-components';
 import Navbar from './components/Nav/Navbar';
 import Create from './pages/Create';
 import Dashboard from './pages/Dashboard';
-import Home from './pages/Home';
+import Home from './pages/home/Home';
 import Login from './pages/Login';
 import Selector from './pages/Selector';
 
+const AppContainer = styled.div`
+    width: 100%;
+    height: calc(100vh - 4rem);
+`;
 
 const App = () => {
   let routes = useRoutes([
@@ -22,12 +27,12 @@ const App = () => {
 
 const AppWrapper = () => {
   return (
-      <React.Fragment>
+      <AppContainer>
         <Navbar />
         <BrowserRouter>
           <App/> 
         </BrowserRouter>
-      </React.Fragment>
+      </AppContainer>
     );
 }
 
