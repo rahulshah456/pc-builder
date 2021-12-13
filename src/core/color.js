@@ -5,12 +5,12 @@ export const accentColor = '#6927ff';
 export const reddishColor = '#ff6d6d';
 
 export const lightColor = '#F6F6F6';
-const lightColorPrimary = '#F0F0F0';
-const lightColorVariant = '#DDDDDD';
+export const lightColorPrimary = '#F0F0F0';
+export const lightColorVariant = '#DDDDDD';
 
 export const darkColor = '#222831';
-const darkColorPrimary = '#393E46';
-const darkColorVariant = '#414141';
+export const darkColorPrimary = '#393E46';
+export const darkColorVariant = '#414141';
 
 export const whiteColor = '#fff';
 export const blackColor = '#000';
@@ -43,4 +43,19 @@ export const textThemeColorInvert = theme('theme', {
 export const rigHoverThemeColor = theme('theme', {
     light: lightColorVariant,
     dark: darkColorPrimary,
+});
+
+export const invoiceThemeColor = theme('theme', {
+    light: whiteColor,
+    dark: darkColorPrimary,
+});
+
+export const invoiceTableHeaderBg = theme('theme', {
+    light: blackColor,
+    dark: whiteColor,
+});
+
+export const invoiceTableBorderColor = theme('theme', {
+  light: darkColorVariant,
+  dark: lightColorVariant,
 });

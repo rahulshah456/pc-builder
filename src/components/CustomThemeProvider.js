@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { ThemeProvider } from "styled-components";
 
 const DarkThemeProvider = ({ children }) => {
-  const darkThemeEnabled = useSelector((state) => state.globalReducer.darkThemeEnabled);
+  const darkThemeEnabled = useSelector((state) => state.global.darkThemeEnabled);
   return (
     <ThemeProvider theme={{ theme: darkThemeEnabled ? "dark" : "light" }}>
       {children}

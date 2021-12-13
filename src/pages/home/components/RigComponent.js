@@ -5,19 +5,19 @@ import Thumbnail from "./Thumbnail";
 
 const StyledRigComponent = styled.div`
     border: 0.5px solid ${rigHoverThemeColor};
-    width: 300px;
-    height: 100px auto;
+    width: 250px;
+    height: auto 100px;
     border-radius: 0.5rem;
     padding: 3rem 2rem;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    algn-items: center;
+    align-items: center;
     gap: 2rem;
     transition: 250ms ease-in;
     cursor: pointer;
 
-    h1 {
+    h2 {
         margin: 0;
         padding: 0;
         font-family: 'Product Sans Black';
@@ -42,7 +42,7 @@ function RigComponent(props) {
         <StyledRigComponent>
             <Thumbnail url={cpu} />
             <div>
-                <h1>{props.header}</h1>
+                <h2>{props.header}</h2>
                 <p>No Selection</p>
             </div>
         </StyledRigComponent>

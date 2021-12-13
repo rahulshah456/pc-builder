@@ -4,14 +4,14 @@ import { rigHoverThemeColor, textThemeColor, whiteColor } from "../../../core/co
 
 const StyledAddComponent = styled.div`
     border: 0.5px solid ${rigHoverThemeColor};
-    width: 300px;
-    height: 100px auto;
+    width: 250px;
+    height: auto 100px;
     border-radius: 0.5rem;
     padding: 3rem 2rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    algn-items: center;
+    align-items: center;
     gap: 2rem;
     transition: 250ms ease-in;
     cursor: pointer;

@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { TOGGLE_DARKTHEME } from '../../actions/globalActions';
 import { secondaryThemeColor } from '../../core/color';
+import { globalActions } from '../../store/slices/global';
 import Switch from '../Switch';
 
 const Ul = styled.ul`
@@ -39,7 +38,7 @@ const Ul = styled.ul`
 
 const RightNav = ({ open }) => {
 
-  const darkThemeEnabled = useSelector((state) => state.globalReducer.darkThemeEnabled);
+  const darkThemeEnabled = useSelector((state) => state.global.darkThemeEnabled);
   const dispatch = useDispatch();
 
   return (
@@ -52,7 +51,7 @@ const RightNav = ({ open }) => {
       <Switch
         id="theme-switch"
         toggled={darkThemeEnabled}
-        onChange={() => dispatch({ type: TOGGLE_DARKTHEME })}
+        onChange={() => dispatch(globalActions.toggleTheme())}
       />
     </Ul>
   )

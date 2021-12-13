@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import React from 'react';
 import RigComponent from './components/RigComponent';
-import { PC_COMPONENTS } from '../../core/constants';
+import { RIG_COMPONENTS as RigComponents } from '../../core/constants';
 import AddComponent from './components/AddComponent';
+import Invoice from './components/Invoice';
 
 const AppContainer = styled.div`
     width: 100%;
@@ -31,32 +32,32 @@ const SelectionContainer = styled.div`
 `;
 
 const PreviewContainer = styled.div`
-    background-color: pink;
     flex: 50%;
     height: auto;
 `;
+
+
+const generateRigComponents = () => {
+    var components = [];
+    RigComponents.forEach((value, key) => {
+        if(key !== 'add') {
+            components.push(<RigComponent header={value.header} />);
+        } else {
+            components.push(<AddComponent />);
+        }
+    });
+    return components;
+}
 
 
 const Home = () => {
     return(
         <AppContainer>
             <SelectionContainer>
-                {PC_COMPONENTS.map((item) => {
-
-                    if(item.id !== 'add') {
-                        return (
-                            <RigComponent header={item.header} />
-                        );
-                    } else {
-                        return (
-                            <AddComponent />
-                        );
-                    }
-                    
-                })}
+                { generateRigComponents() }
             </SelectionContainer>
             <PreviewContainer>
-                <h1>Go Back Boi!</h1>
+                <Invoice />
             </PreviewContainer>
         </AppContainer>
     );

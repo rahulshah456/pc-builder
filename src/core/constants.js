@@ -1,16 +1,17 @@
 export const KEY_LOCAL_THEME = "theme";
-export const PC_COMPONENTS = [
-    {   
+export const RIG_COMPONENTS = new Map([
+    ['cpu', {   
         'id': 'cpu',
-        'header': 'Processor',
-        'selection': false,
-        'name': undefined,
-        'brand': undefined,
-        'model': undefined,
-        'price': undefined,
+        'header': 'CPU',
+        'selection': true,
+        'name': 'AMD Ryzen 5 3600XT, 6Core & 12 Threads Unlocked Desktop Processor with Wraith Spire Cooler',
+        'brand': 'AMD',
+        'model': 'Ryzen 5 3600XT',
+        'price': 19500,
+        'qty': 1,
         'data': undefined,
-    },
-    {   
+    }],
+    ['motherboard', {   
         'id': 'motherboard',
         'header': 'Motherboard',
         'selection': false,
@@ -18,9 +19,10 @@ export const PC_COMPONENTS = [
         'brand': undefined,
         'model': undefined,
         'price': undefined,
+        'qty': 0,
         'data': undefined,
-    },
-    {   
+    }],
+    ['cpu_cooler', {   
         'id': 'cpu_cooler',
         'header': 'CPU Cooler',
         'selection': false,
@@ -28,9 +30,10 @@ export const PC_COMPONENTS = [
         'brand': undefined,
         'model': undefined,
         'price': undefined,
+        'qty': 0,
         'data': undefined,
-    },
-    {   
+    }],
+    ['case', {   
         'id': 'case',
         'header': 'PC Case',
         'selection': false,
@@ -38,19 +41,21 @@ export const PC_COMPONENTS = [
         'brand': undefined,
         'model': undefined,
         'price': undefined,
+        'qty': 0,
         'data': undefined,
-    },
-    {   
+    }],
+    ['gpu', {   
         'id': 'gpu',
-        'header': 'Graphics Card',
+        'header': 'GPU',
         'selection': false,
         'name': undefined,
         'brand': undefined,
         'model': undefined,
         'price': undefined,
+        'qty': 0,
         'data': undefined,
-    },
-    {   
+    }],
+    ['ram', {   
         'id': 'ram',
         'header': 'RAM',
         'selection': false,
@@ -58,9 +63,10 @@ export const PC_COMPONENTS = [
         'brand': undefined,
         'model': undefined,
         'price': undefined,
+        'qty': 0,
         'data': undefined,
-    },
-    {   
+    }],
+    ['storage', {   
         'id': 'storage',
         'header': 'Storage',
         'selection': false,
@@ -68,9 +74,10 @@ export const PC_COMPONENTS = [
         'brand': undefined,
         'model': undefined,
         'price': undefined,
+        'qty': 0,
         'data': undefined,
-    },
-    {   
+    }],
+    ['case_cooler', {   
         'id': 'case_cooler',
         'header': 'Case Cooler',
         'selection': false,
@@ -78,9 +85,10 @@ export const PC_COMPONENTS = [
         'brand': undefined,
         'model': undefined,
         'price': undefined,
+        'qty': 0,
         'data': undefined,
-    },
-    {   
+    }],
+    ['psu', {   
         'id': 'psu',
         'header': 'Power Supply',
         'selection': false,
@@ -88,9 +96,10 @@ export const PC_COMPONENTS = [
         'brand': undefined,
         'model': undefined,
         'price': undefined,
+        'qty': 0,
         'data': undefined,
-    },
-    {   
+    }],
+    ['monitor', {   
         'id': 'monitor',
         'header': 'Monitor',
         'selection': false,
@@ -98,9 +107,10 @@ export const PC_COMPONENTS = [
         'brand': undefined,
         'model': undefined,
         'price': undefined,
+        'qty': 0,
         'data': undefined,
-    },
-    {   
+    }],
+    ['add', {   
         'id': 'add',
         'header': 'Add Component',
         'selection': false,
@@ -108,6 +118,7 @@ export const PC_COMPONENTS = [
         'brand': undefined,
         'model': undefined,
         'price': undefined,
+        'qty': 0,
         'data': undefined,
-    },
-];
+    }],
+]);
