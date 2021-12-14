@@ -39,7 +39,7 @@ const StyledRigComponent = styled.div`
 
 function RigComponent(props) {
     return (
-        <StyledRigComponent>
+        <StyledRigComponent onClick={props.onClickEvent}>
             <Thumbnail url={cpu} />
             <div>
                 <h2>{props.header}</h2>

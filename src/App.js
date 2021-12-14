@@ -6,7 +6,7 @@ import Create from './pages/Create';
 import Dashboard from './pages/Dashboard';
 import Home from './pages/home/Home';
 import Login from './pages/Login';
-import Selector from './pages/Selector';
+import Selector from './pages/selector/Selector';
 
 const AppContainer = styled.div`
     width: 100%;
@@ -17,7 +17,7 @@ const App = () => {
   let routes = useRoutes([
     { path: "/", element: <Home /> },
     { path: "/create", element: <Create /> },
-    { path: "/create/selector", element: <Selector /> },
+    { path: "/create/selector/:id", element: <Selector /> },
     { path: "/login", element: <Login /> },
     { path: "/dashboard", element: <Dashboard /> }
   ]);

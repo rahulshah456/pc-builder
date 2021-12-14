@@ -44,7 +44,6 @@ const ContentTable = styled.table`
 
 const generateInvoiceItems = (rigComponents) => {
     var items = [], count = 1;
-    console.log(rigComponents);
     rigComponents.forEach((value, key) => {
         items.push(
             <tr>

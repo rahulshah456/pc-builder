@@ -22,9 +22,9 @@ const StyledAddComponent = styled.div`
 `;
 
 
-function AddComponent() {
+function AddComponent(props) {
     return (
-        <StyledAddComponent>
+        <StyledAddComponent onClick={props.onClickEvent}>
             <AddIcon />
         </StyledAddComponent>
     );

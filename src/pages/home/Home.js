@@ -4,6 +4,7 @@ import RigComponent from './components/RigComponent';
 import { RIG_COMPONENTS as RigComponents } from '../../core/constants';
 import AddComponent from './components/AddComponent';
 import Invoice from './components/Invoice';
+import { useNavigate } from 'react-router-dom';
 
 const AppContainer = styled.div`
     width: 100%;
@@ -37,24 +38,36 @@ const PreviewContainer = styled.div`
 `;
 
 
-const generateRigComponents = () => {
+const generateRigComponents = (navigate) => {
     var components = [];
     RigComponents.forEach((value, key) => {
         if(key !== 'add') {
-            components.push(<RigComponent header={value.header} />);
+            components.push(
+                <RigComponent 
+                    header={value.header} 
+                    onClickEvent={ async () => navigate(`/create/selector/${value.id}`) } />
+            );
         } else {
-            components.push(<AddComponent />);
+            components.push(<AddComponent onClickEvent={ addComponentDialog }/>);
         }
     });
     return components;
 }
 
 
+const addComponentDialog = async () => {
+    console.log("add Clicked!");
+}
+
+
 const Home = () => {
+
+    const navigate = useNavigate();
+
     return(
         <AppContainer>
             <SelectionContainer>
-                { generateRigComponents() }
+                { generateRigComponents(navigate) }
             </SelectionContainer>
             <PreviewContainer>
                 <Invoice />
