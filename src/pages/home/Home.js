@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import React from 'react';
 import RigComponent from './components/RigComponent';
-import { RIG_COMPONENTS as RigComponents } from '../../core/constants';
 import AddComponent from './components/AddComponent';
 import Invoice from './components/Invoice';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const AppContainer = styled.div`
     width: 100%;
@@ -38,19 +38,20 @@ const PreviewContainer = styled.div`
 `;
 
 
-const generateRigComponents = (navigate) => {
+const generateRigComponents = (navigate, rigComponents) => {
     var components = [];
-    RigComponents.forEach((value, key) => {
+    for (const [key, value] of Object.entries(rigComponents)) { 
         if(key !== 'add') {
             components.push(
                 <RigComponent 
-                    header={value.header} 
+                    key={value.id}
+                    component={value} 
                     onClickEvent={ async () => navigate(`/create/selector/${value.id}`) } />
             );
         } else {
-            components.push(<AddComponent onClickEvent={ addComponentDialog }/>);
+            components.push(<AddComponent key='add' onClickEvent={ addComponentDialog }/>);
         }
-    });
+    }
     return components;
 }
 
@@ -63,11 +64,12 @@ const addComponentDialog = async () => {
 const Home = () => {
 
     const navigate = useNavigate();
+    const rigComponents = useSelector((state) => state.components.RigComponents);
 
     return(
         <AppContainer>
             <SelectionContainer>
-                { generateRigComponents(navigate) }
+                { generateRigComponents(navigate, rigComponents) }
             </SelectionContainer>
             <PreviewContainer>
                 <Invoice />

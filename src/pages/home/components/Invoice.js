@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { LogoInvert } from "../../../components/Logo";
 import { invoiceTableBorderColor, invoiceTableHeaderBg, invoiceThemeColor, 
     textThemeColor, textThemeColorInvert, whiteColor } from "../../../core/color";
+import { formatLocaleCurrency } from "../../../core/utils";
 
 
 const InvoiceContainer = styled.div`
@@ -42,20 +43,23 @@ const ContentTable = styled.table`
 `;
 
 
+
 const generateInvoiceItems = (rigComponents) => {
     var items = [], count = 1;
-    rigComponents.forEach((value, key) => {
+    for (const [key, value] of Object.entries(rigComponents)) {
+        const price = formatLocaleCurrency(value.price);
+        const totalPrice = formatLocaleCurrency(value.qty * value.price);
         items.push(
-            <tr>
+            <tr key={value.id}>
                 <td>{ count++ }</td>
                 <td>{ value.header }</td>
                 <td>{ value.name }</td>
-                <td>{ value.price }</td>
-                <td>{ value.qty }</td>
-                <td>{ value.qty * value.price }</td>
+                <td>{ value.price != null ? price : '' }</td>
+                <td>{ value.qty > 0 && value.qty }</td>
+                <td>{ value.price != null ? totalPrice : '' }</td>
             </tr>
         );
-    });
+    }
     return items;
 }
 
@@ -63,6 +67,8 @@ const generateInvoiceItems = (rigComponents) => {
 const Invoice = () => {
 
     const rigComponents = useSelector((state) => state.components.RigComponents);
+
+    console.log(rigComponents);
 
     return (
         <InvoiceContainer>

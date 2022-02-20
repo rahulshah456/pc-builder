@@ -2,15 +2,15 @@ import styled from "styled-components";
 
 
 const StyledThumbnail = styled.img`
-     width: 5rem;
-    height: 5rem auto;
+    width: 6rem;
+    height: 6rem auto;
     align-self: center;
 `;
 
-function Thumbnail(props) {
+function ThumbnailComponent(props) {
     return (
         <StyledThumbnail src={props.url} />
     );
 }
 
-export default Thumbnail;
+export default ThumbnailComponent;

@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { rigHoverThemeColor } from "../../../core/color";
+import { getComponentThumbnail } from "../../../core/utils";
 import cpu from "../../../res/cpu.png";
+import ThumbnailComponent from "../../selector/components/ThumbnailComponent";
 import Thumbnail from "./Thumbnail";
 
 const StyledRigComponent = styled.div`
@@ -13,7 +15,7 @@ const StyledRigComponent = styled.div`
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
     transition: 250ms ease-in;
     cursor: pointer;
 
@@ -36,14 +38,22 @@ const StyledRigComponent = styled.div`
     }
 `;
 
+const StyledWarning = styled.p`
+    color: red;
+`;
+
 
 function RigComponent(props) {
+
+    const component = props.component;
+
     return (
-        <StyledRigComponent onClick={props.onClickEvent}>
-            <Thumbnail url={cpu} />
+        <StyledRigComponent onClick={component.isAvailable && props.onClickEvent}>
+            <Thumbnail url={ component.isSelected ? getComponentThumbnail(component.image) : cpu} />
             <div>
-                <h2>{props.header}</h2>
-                <p>No Selection</p>
+                <h2>{component.header}</h2>
+                { component.isAvailable && <p>{ component.isSelected ? component.name : 'No Selection' }</p> }
+                { !component.isAvailable && <StyledWarning>Unavailable</StyledWarning> }
             </div>
         </StyledRigComponent>
     );
