@@ -22,7 +22,7 @@ const StyledRigComponent = styled.div`
     gap: 1.5rem;
     position: relative;
     transition: 250ms ease-in;
-    ///cursor: pointer;
+    cursor: pointer;
 
     h2 {
         margin: 0;
