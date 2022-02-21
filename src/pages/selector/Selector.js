@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import CPUComponent from "./components/CPUComponent";
+import SelectionComponent from "./components/SelectionComponent";
 
 const StyledSelector = styled.div`
     display: flex;
@@ -69,7 +69,7 @@ const Selector = () => {
     return(
         <StyledSelector>
             {(isLoading) ? <h2>Loading...</h2> : 
-                processors.map(data => <CPUComponent data={data} type={params.id} />) }
+                processors.map(data => <SelectionComponent data={data} type={params.id} />) }
         </StyledSelector>
     );
 }

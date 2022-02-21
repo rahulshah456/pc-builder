@@ -1,7 +1,11 @@
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { CloseButton, RemoveButton } from "../../../components/CloseButton";
 import { rigHoverThemeColor } from "../../../core/color";
 import { getComponentThumbnail } from "../../../core/utils";
 import cpu from "../../../res/cpu.png";
+import { componentsActions } from "../../../store/slices/components";
 import ThumbnailComponent from "../../selector/components/ThumbnailComponent";
 import Thumbnail from "./Thumbnail";
 
@@ -16,8 +20,9 @@ const StyledRigComponent = styled.div`
     justify-content: flex-start;
     align-items: center;
     gap: 1.5rem;
+    position: relative;
     transition: 250ms ease-in;
-    cursor: pointer;
+    ///cursor: pointer;
 
     h2 {
         margin: 0;
@@ -45,10 +50,18 @@ const StyledWarning = styled.p`
 
 function RigComponent(props) {
 
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const component = props.component;
 
     return (
-        <StyledRigComponent onClick={component.isAvailable && props.onClickEvent}>
+        <StyledRigComponent onClick={ async () => { 
+                component.isAvailable && navigate(`/create/selector/${component.id}`); 
+            } }>
+            { component.isSelected && <RemoveButton onClickEvent={(event)=> {
+                event.stopPropagation();
+                dispatch(componentsActions.removeSelection(component.id));
+            }} /> }
             <Thumbnail url={ component.isSelected ? getComponentThumbnail(component.image) : cpu} />
             <div>
                 <h2>{component.header}</h2>

@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { formatLocaleCurrency, getComponentThumbnail } from "../../../core/utils";
 
-const StyledCPUComponent = styled.div`
+const StyledSelectionComponent = styled.div`
     border: 0.5px solid ${rigHoverThemeColor};
     width: 250px;
     height: 80px;
@@ -34,7 +34,7 @@ const StyledCPUComponent = styled.div`
     }
 `;
 
-const StyledCPUDesc = styled.div`
+const StyledSelectionDesc = styled.div`
     margin: 0;
     padding: 0;
 
@@ -50,7 +50,7 @@ const StyledCPUDesc = styled.div`
 
 
 
-const CPUComponent = (props) => {
+const SelectionComponent = (props) => {
 
     const dispatch = useDispatch();
     const component = props.data;
@@ -59,17 +59,17 @@ const CPUComponent = (props) => {
     
 
     return(
-        <StyledCPUComponent onClick={() => {
+        <StyledSelectionComponent onClick={() => {
              dispatch(componentsActions.updateSelection({component:component, type: props.type}));
              navigate(-1);
         }}>
             <ThumbnailComponent url={imageUrl} />
-            <StyledCPUDesc>
+            <StyledSelectionDesc>
                 <h3>{component.name}</h3>
                 <p>&#8377;{formatLocaleCurrency(Math.round(component.price))}</p>
-            </StyledCPUDesc>
-        </StyledCPUComponent>
+            </StyledSelectionDesc>
+        </StyledSelectionComponent>
     );
 }
 
-export default CPUComponent;
+export default SelectionComponent;

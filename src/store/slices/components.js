@@ -18,7 +18,7 @@ const componentsSlice = createSlice({
       const component = actions.payload.component;
       const type = actions.payload.type;
 
-      //updating selected variables
+      //updating selection variables
       const oldComponent = state.RigComponents[type];
       oldComponent.price = Math.round(component.price);
       oldComponent.name = component.name;
@@ -26,12 +26,18 @@ const componentsSlice = createSlice({
       oldComponent.image = component.image;
       oldComponent.qty = 1;
 
-      //applying changes to state component
-      state.RigComponents[type] = oldComponent;
-
     },
     removeSelection(state, actions) {
       
+      //selected component type
+      const type = actions.payload;
+
+      //clear selection variables
+      const component = state.RigComponents[type];
+      component.price = component.name = component.image = undefined;
+      component.isSelected = false;
+      component.qty = 0;
+
     }
   }
 });

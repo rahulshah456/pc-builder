@@ -3,7 +3,6 @@ import React from 'react';
 import RigComponent from './components/RigComponent';
 import AddComponent from './components/AddComponent';
 import Invoice from './components/Invoice';
-import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const AppContainer = styled.div`
@@ -38,15 +37,14 @@ const PreviewContainer = styled.div`
 `;
 
 
-const generateRigComponents = (navigate, rigComponents) => {
+const generateRigComponents = (rigComponents) => {
     var components = [];
     for (const [key, value] of Object.entries(rigComponents)) { 
         if(key !== 'add') {
             components.push(
                 <RigComponent 
                     key={value.id}
-                    component={value} 
-                    onClickEvent={ async () => navigate(`/create/selector/${value.id}`) } />
+                    component={value} />
             );
         } else {
             components.push(<AddComponent key='add' onClickEvent={ addComponentDialog }/>);
@@ -63,13 +61,12 @@ const addComponentDialog = async () => {
 
 const Home = () => {
 
-    const navigate = useNavigate();
     const rigComponents = useSelector((state) => state.components.RigComponents);
 
     return(
         <AppContainer>
             <SelectionContainer>
-                { generateRigComponents(navigate, rigComponents) }
+                { generateRigComponents(rigComponents) }
             </SelectionContainer>
             <PreviewContainer>
                 <Invoice />
