@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-import { blackColor, whiteColor } from "../core/color";
+import { blackColor, whiteColor } from "../../core/color";
 
 const StyledCloseButton = styled.div`
     position: absolute;

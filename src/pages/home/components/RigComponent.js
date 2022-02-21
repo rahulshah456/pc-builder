@@ -1,10 +1,9 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { CloseButton, RemoveButton } from "../../../components/CloseButton";
+import { RemoveButton } from "../../../components/Btn/CloseButton";
 import { rigHoverThemeColor } from "../../../core/color";
 import { getComponentThumbnail } from "../../../core/utils";
-import cpu from "../../../res/cpu.png";
 import { componentsActions } from "../../../store/slices/components";
 import ThumbnailComponent from "../../selector/components/ThumbnailComponent";
 import Thumbnail from "./Thumbnail";
@@ -62,7 +61,7 @@ function RigComponent(props) {
                 event.stopPropagation();
                 dispatch(componentsActions.removeSelection(component.id));
             }} /> }
-            <Thumbnail url={ component.isSelected ? getComponentThumbnail(component.image) : cpu} />
+            <Thumbnail url={ component.isSelected ? getComponentThumbnail(component.image) : `./${component.id}.png`} />
             <div>
                 <h2>{component.header}</h2>
                 { component.isAvailable && <p>{ component.isSelected ? component.name : 'No Selection' }</p> }

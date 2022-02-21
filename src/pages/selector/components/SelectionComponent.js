@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { rigHoverThemeColor } from "../../../core/color";
-import cpu from "../../../res/cpu.png";
 import Thumbnail from "../../home/components/Thumbnail";
 import ThumbnailComponent from "./ThumbnailComponent";
 import { componentsActions } from "../../../store/slices/components";

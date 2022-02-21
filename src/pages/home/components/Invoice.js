@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import BtnPrimary from "../../../components/Btn/BtnPrimary";
 import { LogoInvert } from "../../../components/Logo";
 import { invoiceTableBorderColor, invoiceTableHeaderBg, invoiceThemeColor, 
     textThemeColor, textThemeColorInvert, whiteColor } from "../../../core/color";
@@ -13,6 +14,7 @@ const InvoiceContainer = styled.div`
     padding: 4rem 0;
     margin: 3rem 3rem 3rem 0;
     min-height: 1000px;
+    position: relative;
     background-color: ${invoiceThemeColor};
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 `;
@@ -62,17 +64,32 @@ const GrandTotal = styled.div`
     }
 `;
 
+const ButtonsContainer = styled.div`
+    display: flex;
+    gap: 1rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+`;
+
 
 
 const generateInvoiceItems = (rigComponents) => {
+
     var items = [], count = 1;
     var subTotal = Number(0), selections = Number(0);
+
     for (const [key, value] of Object.entries(rigComponents)) {
+
+        //format price to local currency
         const price = formatLocaleCurrency(value.price);
         const totalPrice = formatLocaleCurrency(value.qty * value.price);
-        console.log(value.price);
+
+        //calculate subtotal and selected components
         if(value.price != null) subTotal = subTotal + (value.qty * value.price);
         (value.isSelected) && selections++;
+
+        //add components with price to invoice table
         items.push(
             <tr key={value.id}>
                 <td>{ count++ }</td>
@@ -96,6 +113,10 @@ const Invoice = () => {
     
     return (
         <InvoiceContainer>
+            <ButtonsContainer>
+                <BtnPrimary name="Print" />
+                <BtnPrimary name="Save" />
+            </ButtonsContainer>
             <InvoiceHeader>
                 <LogoInvert color={textThemeColor} />
             </InvoiceHeader>
@@ -113,11 +134,11 @@ const Invoice = () => {
                 </ContentTable>
             </InvoiceBody>
             <InvoiceFooter>
-                <p>Sub Total: &#8377;{ formatLocaleCurrency(subTotal) }</p>
-                <p>GST 18%: &#8377;{ formatLocaleCurrency(subTotal * 0.18) }</p>
-                <p>Components: {selections}</p>
+                <p>Sub Total:&nbsp; &#8377;{ formatLocaleCurrency(subTotal) }</p>
+                <p>GST 18%:&nbsp; &#8377;{ formatLocaleCurrency(subTotal * 0.18) }</p>
+                <p>Components:&nbsp; {selections}</p>
                 <GrandTotal>
-                    <hr color="black"/>
+                    <hr color={invoiceTableBorderColor}/>
                     <p>GRAND TOTAL</p>
                     <CostDisplay>&#8377;{ formatLocaleCurrency(subTotal + (subTotal * 0.18)) }</CostDisplay>
                 </GrandTotal>
