@@ -1,10 +1,17 @@
-# Getting Started with Create React App
+# PC Builder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The PC Builder is the perfect tool for you to choose one by one the parts of your computer and try different configurations and budgets. Invoice will be generated in real-time as you do the changes, save or print directly. 
+
+![pc_builder (3)](https://user-images.githubusercontent.com/41780639/168817890-055e17e4-a7ee-4db0-8a58-87efcc00ef3e.png)
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+This command will install all the required packages for running this application.
+
 
 ### `npm start`
 
