@@ -27,13 +27,13 @@ const App = () => {
 
 const AppWrapper = () => {
   return (
-      <AppContainer>
-        <Navbar />
-        <BrowserRouter>
-          <App/> 
-        </BrowserRouter>
-      </AppContainer>
-    );
+    <AppContainer>
+      <Navbar />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </AppContainer>
+  );
 }
 
 

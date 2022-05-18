@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import { AddIcon } from "../../../components/Icons";
 import { rigHoverThemeColor, textThemeColor, whiteColor } from "../../../core/color";

@@ -5,14 +5,14 @@ import AppWrapper from './App';
 import DarkThemeProvider from './components/CustomThemeProvider';
 import { GlobalStyle } from './core/theme';
 import store from './store';
-
+require('dotenv').config();
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}> 
+    <Provider store={store}>
       <DarkThemeProvider>
-          <GlobalStyle />
-          <AppWrapper/>
+        <GlobalStyle />
+        <AppWrapper />
       </DarkThemeProvider>
     </Provider>
   </React.StrictMode>,

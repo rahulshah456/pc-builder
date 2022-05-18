@@ -14,9 +14,9 @@ const StyledSelector = styled.div`
 `;
 
 
-const FetchProcessors = async (component) => {
+const FetchProcessors = async (componentId) => {
     try {
-        const response = await fetch(`http://localhost:8080/links/${component}`, {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/component/${componentId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8',
@@ -27,13 +27,10 @@ const FetchProcessors = async (component) => {
         });
         return response.json();
 
-    } catch(error) {
+    } catch (error) {
         console.log(error);
     }
 }
-
-
-
 
 
 const Selector = () => {
@@ -49,9 +46,9 @@ const Selector = () => {
         const response = await FetchProcessors(params.id);
         const components = [];
 
-        if(response.toplist.length > 0) {
+        if (response?.toplist.length > 0) {
 
-            response.toplist.forEach( (item, index) => {
+            response.toplist.forEach((item, index) => {
                 components.push(item);
             });
 
@@ -63,13 +60,15 @@ const Selector = () => {
 
     useEffect(() => {
         generateCPUComponents();
-    },[]);
-    
+    }, []);
 
-    return(
+
+    return (
         <StyledSelector>
-            {(isLoading) ? <h2>Loading...</h2> : 
-                processors.map(data => <SelectionComponent data={data} type={params.id} />) }
+            {(isLoading) ? <h2>Loading...</h2> :
+                processors.map(data => {
+                    return <SelectionComponent key={data.name_url} data={data} type={params.id} />
+                })}
         </StyledSelector>
     );
 }

@@ -1,3 +1,4 @@
+import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -54,18 +55,18 @@ function RigComponent(props) {
     const component = props.component;
 
     return (
-        <StyledRigComponent onClick={ async () => { 
-                component.isAvailable && navigate(`/create/selector/${component.id}`); 
-            } }>
-            { component.isSelected && <RemoveButton onClickEvent={(event)=> {
+        <StyledRigComponent data-testid={component.id} onClick={async () => {
+            component.isAvailable && navigate(`/create/selector/${component.id}`);
+        }}>
+            {component.isSelected && <RemoveButton onClickEvent={(event) => {
                 event.stopPropagation();
                 dispatch(componentsActions.removeSelection(component.id));
-            }} /> }
-            <Thumbnail url={ component.isSelected ? getComponentThumbnail(component.image) : `./${component.id}.png`} />
+            }} />}
+            <Thumbnail url={component.isSelected ? getComponentThumbnail(component.image) : `./${component.id}.png`} />
             <div>
                 <h2>{component.header}</h2>
-                { component.isAvailable && <p>{ component.isSelected ? component.name : 'No Selection' }</p> }
-                { !component.isAvailable && <StyledWarning>Unavailable</StyledWarning> }
+                {component.isAvailable && <p>{component.isSelected ? component.name : 'No Selection'}</p>}
+                {!component.isAvailable && <StyledWarning>Unavailable</StyledWarning>}
             </div>
         </StyledRigComponent>
     );

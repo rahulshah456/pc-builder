@@ -1,5 +1,5 @@
+import React from "react";
 import styled from "styled-components";
-
 
 const StyledThumbnail = styled.img`
      width: 5rem;

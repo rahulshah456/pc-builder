@@ -1,10 +1,13 @@
+import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import BtnPrimary from "../../../components/Btn/BtnPrimary";
 import { LogoInvert } from "../../../components/Logo";
-import { invoiceTableBorderColor, invoiceTableHeaderBg, invoiceThemeColor, 
-    textThemeColor, textThemeColorInvert, whiteColor } from "../../../core/color";
+import {
+    invoiceTableBorderColor, invoiceTableHeaderBg, invoiceThemeColor,
+    textThemeColor, textThemeColorInvert, whiteColor
+} from "../../../core/color";
 import { formatLocaleCurrency } from "../../../core/utils";
 
 
@@ -86,18 +89,18 @@ const generateInvoiceItems = (rigComponents) => {
         const totalPrice = formatLocaleCurrency(value.qty * value.price);
 
         //calculate subtotal and selected components
-        if(value.price != null) subTotal = subTotal + (value.qty * value.price);
+        if (value.price != null) subTotal = subTotal + (value.qty * value.price);
         (value.isSelected) && selections++;
 
         //add components with price to invoice table
         items.push(
             <tr key={value.id}>
-                <td>{ count++ }</td>
-                <td>{ value.header }</td>
-                <td>{ value.name }</td>
-                <td>{ value.price != null ? price : '' }</td>
-                <td>{ value.qty > 0 && value.qty }</td>
-                <td>{ value.price != null ? totalPrice : '' }</td>
+                <td>{count++}</td>
+                <td>{value.header}</td>
+                <td>{value.name}</td>
+                <td>{value.price != null ? price : ''}</td>
+                <td>{value.qty > 0 && value.qty}</td>
+                <td>{value.price != null ? totalPrice : ''}</td>
             </tr>
         );
     }
@@ -110,7 +113,7 @@ const Invoice = () => {
     const rigComponents = useSelector((state) => state.components.RigComponents);
     const { items, subTotal, selections } = generateInvoiceItems(rigComponents);
 
-    
+
     return (
         <InvoiceContainer>
             <ButtonsContainer>
@@ -130,17 +133,17 @@ const Invoice = () => {
                         <th>Quantity</th>
                         <th>Total</th>
                     </tr>
-                    { items }
+                    {items}
                 </ContentTable>
             </InvoiceBody>
             <InvoiceFooter>
-                <p>Sub Total:&nbsp; &#8377;{ formatLocaleCurrency(subTotal) }</p>
-                <p>GST 18%:&nbsp; &#8377;{ formatLocaleCurrency(subTotal * 0.18) }</p>
+                <p>Sub Total:&nbsp; &#8377;{formatLocaleCurrency(subTotal)}</p>
+                <p>GST 18%:&nbsp; &#8377;{formatLocaleCurrency(subTotal * 0.18)}</p>
                 <p>Components:&nbsp; {selections}</p>
                 <GrandTotal>
-                    <hr color={invoiceTableBorderColor}/>
+                    <hr color={invoiceTableBorderColor} />
                     <p>GRAND TOTAL</p>
-                    <CostDisplay>&#8377;{ formatLocaleCurrency(subTotal + (subTotal * 0.18)) }</CostDisplay>
+                    <CostDisplay>&#8377;{formatLocaleCurrency(subTotal + (subTotal * 0.18))}</CostDisplay>
                 </GrandTotal>
             </InvoiceFooter>
         </InvoiceContainer>

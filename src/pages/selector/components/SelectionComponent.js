@@ -45,22 +45,18 @@ const StyledSelectionDesc = styled.div`
 `;
 
 
-
-
-
-
 const SelectionComponent = (props) => {
 
     const dispatch = useDispatch();
     const component = props.data;
     const imageUrl = getComponentThumbnail(component.image);
     const navigate = useNavigate();
-    
 
-    return(
+
+    return (
         <StyledSelectionComponent onClick={() => {
-             dispatch(componentsActions.updateSelection({component:component, type: props.type}));
-             navigate(-1);
+            dispatch(componentsActions.updateSelection({ component: component, type: props.type }));
+            navigate(-1);
         }}>
             <ThumbnailComponent url={imageUrl} />
             <StyledSelectionDesc>

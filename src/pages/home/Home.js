@@ -39,15 +39,21 @@ const PreviewContainer = styled.div`
 
 const generateRigComponents = (rigComponents) => {
     var components = [];
-    for (const [key, value] of Object.entries(rigComponents)) { 
-        if(key !== 'add') {
+    for (const [key, value] of Object.entries(rigComponents)) {
+        if (key !== 'add') {
             components.push(
-                <RigComponent 
+                <RigComponent
                     key={value.id}
-                    component={value} />
+                    component={value}
+                />
             );
         } else {
-            components.push(<AddComponent key='add' onClickEvent={ addComponentDialog }/>);
+            components.push(
+                <AddComponent
+                    key='add'
+                    onClickEvent={addComponentDialog}
+                />
+            );
         }
     }
     return components;
@@ -63,10 +69,10 @@ const Home = () => {
 
     const rigComponents = useSelector((state) => state.components.RigComponents);
 
-    return(
+    return (
         <AppContainer>
-            <SelectionContainer>
-                { generateRigComponents(rigComponents) }
+            <SelectionContainer data-testid='selection-container'>
+                {generateRigComponents(rigComponents)}
             </SelectionContainer>
             <PreviewContainer>
                 <Invoice />
