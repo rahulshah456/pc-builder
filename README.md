@@ -4,6 +4,14 @@ The PC Builder is the perfect tool for you to choose one by one the parts of you
 
 ![pc_builder (3)](https://user-images.githubusercontent.com/41780639/168817890-055e17e4-a7ee-4db0-8a58-87efcc00ef3e.png)
 
+
+## Environment variable setup
+
+Below constant variables required for running the application. create the .env file in the root of the project and add the respective variables
+
+`REACT_APP_BASE_URL=http://localhost:4001`
+
+
 ## Available Scripts
 
 In the project directory, you can run:
